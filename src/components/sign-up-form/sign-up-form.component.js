@@ -1,6 +1,5 @@
 import './sign-up-form.styles.scss';
 import { useState } from 'react';
-
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -36,6 +35,7 @@ const SignUpForm = () => {
         email,
         password
       );
+
       await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
     } catch (error) {
