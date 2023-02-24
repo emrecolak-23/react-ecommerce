@@ -9,11 +9,10 @@ import { signOutUser } from '../../utils/firebase/firebase.utils';
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 
 const Navigation = () => {
-  const { currentUser, setCurrentUser } = useUserContext();
+  const { currentUser } = useUserContext();
 
   const handleSignOut = async () => {
     await signOutUser();
-    setCurrentUser(null);
   };
 
   let authLink;
