@@ -1,4 +1,9 @@
-import './navigation.styles.scss';
+import {
+  NavigationContainer,
+  NavLinkContainer,
+  NavLink,
+  LogoContainer,
+} from './navigation.styles';
 
 import useUserContext from '../../hooks/user-context.hooks';
 import useCartContext from '../../hooks/cart-context.hooks';
@@ -21,34 +26,28 @@ const Navigation = () => {
 
   let authLink;
   if (!currentUser) {
-    authLink = (
-      <Link className="nav-link" to="/auth">
-        SIGN IN
-      </Link>
-    );
+    authLink = <NavLink to="/auth">SIGN IN</NavLink>;
   } else {
     authLink = (
-      <span className="nav-link" onClick={handleSignOut}>
+      <NavLink as="span" onClick={handleSignOut}>
         SIGN OUT
-      </span>
+      </NavLink>
     );
   }
 
   return (
     <Fragment>
-      <div className="navigation">
-        <Link className="logo-container" to="/">
+      <NavigationContainer>
+        <LogoContainer to="/">
           <CrwnLogo className="logo" />
-        </Link>
-        <div className="nav-links-container">
-          <Link className="nav-link" to="/shop">
-            SHOP
-          </Link>
+        </LogoContainer>
+        <NavLinkContainer>
+          <NavLink to="/shop">SHOP</NavLink>
           {authLink}
           <CardIcon />
-        </div>
+        </NavLinkContainer>
         {isCartOpen && <CartDropdown />}
-      </div>
+      </NavigationContainer>
       <Outlet />
     </Fragment>
   );
