@@ -8,7 +8,7 @@ import {
 import useUserContext from '../../hooks/user-context.hooks';
 import useCartContext from '../../hooks/cart-context.hooks';
 import { Fragment } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 
