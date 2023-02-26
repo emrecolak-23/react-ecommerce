@@ -12,6 +12,7 @@ import {
   createUserDocumentFromAuth,
 } from './utils/firebase/firebase.utils';
 import { setCurrentUser } from './store/user/user.actions';
+
 import { useDispatch } from 'react-redux';
 const App = () => {
   const dispatch = useDispatch();
