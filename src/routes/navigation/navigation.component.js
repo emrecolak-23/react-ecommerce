@@ -6,7 +6,7 @@ import {
 } from './navigation.styles';
 
 // import useUserContext from '../../hooks/user-context.hooks';
-import useCartContext from '../../hooks/cart-context.hooks';
+// import useCartContext from '../../hooks/cart-context.hooks';
 import { Fragment } from 'react';
 import { Outlet } from 'react-router-dom';
 
@@ -19,10 +19,13 @@ import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component
 import { useSelector } from 'react-redux';
 import { selectorCurrentUser } from '../../store/user/user.selector';
 
+import { selectIsCartOpen } from '../../store/cart/cart.selector';
+
 const Navigation = () => {
   const currentUser = useSelector(selectorCurrentUser);
   // const { currentUser } = useUserContext();
-  const { isCartOpen } = useCartContext();
+  // const { isCartOpen } = useCartContext();
+  const isCartOpen = useSelector(selectIsCartOpen);
 
   const handleSignOut = async () => {
     await signOutUser();
