@@ -9,7 +9,7 @@ import {
   PaymentFormContainer,
   FormContainer,
   PaymentButton,
-} from './payment-from.styles';
+} from './payment-form.styles';
 
 const PaymentForm = () => {
   const stripe = useStripe();
@@ -23,6 +23,7 @@ const PaymentForm = () => {
       return;
     }
     setIsProcessingPayment(true);
+
     const response = await fetch('/.netlify/functions/create-payment-intent', {
       method: 'post',
       headers: {
@@ -33,7 +34,6 @@ const PaymentForm = () => {
     const {
       paymentIntent: { client_secret },
     } = response;
-    console.log(client_secret);
     const paymentResult = await stripe.confirmCardPayment(client_secret, {
       payment_method: {
         card: elements.getElement(CardElement),
