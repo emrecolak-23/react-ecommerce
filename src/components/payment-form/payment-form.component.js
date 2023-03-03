@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
+import { BUTTON_TYPE_CLASSES } from '../button/button.component';
 import {
   PaymentFormContainer,
   FormContainer,
   PaymentButton,
 } from './payment-form.styles';
-import {
-  selectCartTotal,
-  selectCartItems,
-} from '../../store/cart/cart.selector';
+import { selectCartTotal } from '../../store/cart/cart.selector';
 import { selectorCurrentUser } from '../../store/user/user.selector';
 import { clearItemsFromCart } from '../../store/cart/cart.actions';
 const PaymentForm = () => {
@@ -19,7 +16,6 @@ const PaymentForm = () => {
   const elements = useElements();
 
   const amount = useSelector(selectCartTotal);
-  const cartItems = useSelector(selectCartItems);
   const currentUser = useSelector(selectorCurrentUser);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
